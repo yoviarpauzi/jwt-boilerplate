@@ -1,0 +1,30 @@
+GET http://127.0.0.1:3000 HTTP/1.1
+
+###
+POST http://127.0.0.1:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "alice@prisma.io",
+    "password": "password"
+}
+
+###
+@baseUrl = http://127.0.0.1:3000
+@authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQHByaXNtYS5pbyIsImNyZWF0ZWRfYXQiOjE3NDA3NDcwMDcxMDYsImlhdCI6MTc0MDc0NzAwNywiZXhwIjoxNzQwNzUwNjA3fQ.3YZppm4ylf38LzMreCZGXAC1oDXYEZvmonHbP9iw1Bw
+@cookie=refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQHByaXNtYS5pbyIsImNyZWF0ZV9hdCI6MTc0MDc0NzAwNzEwOSwiaWF0IjoxNzQwNzQ3MDA3LCJleHAiOjE3NzIzMDQ2MDd9.1AWsPZF0uuwyUZzSBafnpSTTnKhs3l7zoa2sDiqe2PE; Max-Age=30758400; Path=/; Expires=Thu, 19 Feb 2026 12:50:07 GMT; HttpOnly; Secure; SameSite=Strict
+
+###
+GET http://127.0.0.1:3000/profile HTTP/1.1
+Authorization: {{authorization}}
+Cookie: {{cookie}}}
+
+###
+GET http://127.0.0.1:3000/refresh-token HTTP/1.1
+Authorization: : {{authorization}}
+Cookie: {{cookie}}
+
+###
+GET http://127.0.0.1:3000/logout HTTP/1.1
+Authorization: : {{authorization}}
+Cookie: {{cookie}}
